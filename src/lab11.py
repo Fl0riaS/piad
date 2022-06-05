@@ -47,7 +47,7 @@ def makeMGArr(start, finish):
 X,y = make_classification(n_samples=1501, n_features=2, n_clusters_per_class=1, n_informative=2, n_redundant=0, n_classes=4)
 
 plt.scatter(X[:,0],X[:,1],c=y)
-#plt.show()
+plt.show()
 
 #2)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5)
@@ -83,10 +83,6 @@ for i in range(len(methodsList)):
   recall[i]=metrics.recall_score(y_test,y_pred,average='macro')
   prec[i]=metrics.precision_score(y_test,y_pred,average='macro')
   f1[i]=metrics.f1_score(y_test,y_pred,average='macro')
-  # if i<5:
-  #   roc_auc[i]=metrics.roc_auc_score(y_test,y_pred,multi_class='ovo',average='macro')
-  # else:
-  #   roc_auc[i]=metrics.roc_auc_score(y_test,y_pred,multi_class='ovr')
 
   y_pred_dec=methodsList[i].decision_function(X_test)
 
