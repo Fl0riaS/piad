@@ -41,7 +41,7 @@ def kmeans(x, k, iter):
     return P, C
 
 #ladowanie z pliku
-csv = pd.read_csv('autos.csv')
+csv = pd.read_csv('./src/files/autos.csv')
 X = [csv['length'], csv['width'], csv['city-mpg']]
 X = np.transpose(np.array(X))
 

@@ -33,7 +33,7 @@ def infogain(x,y,z):
 
 
 #4
-zoo=pd.read_csv('zoo.csv')
+zoo=pd.read_csv('./src/files/zoo.csv')
 #print(freq(zoo[['milk']]))
 #print(freq(zoo[['milk']],prob=False))
 print(freq2(zoo[['predator','toothed']]))

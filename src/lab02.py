@@ -5,6 +5,9 @@ import scipy as sp
 import matplotlib.pyplot as plt
 from scipy import stats
 
+f = open("demofile2.txt", "a")
+f.write("Now the file has more content!")
+f.close()
 
 #Tworzenie tabeli
 d = {'data': ['2020-03-01', '2020-03-01', '2020-03-01', '2020-03-01', '2020-03-01'], 'A': np.random.rand(5), 'B': np.random.rand(5), 'C': np.random.rand(5)}
@@ -98,8 +101,8 @@ print(df.groupby('y').mean())
 #2)
 print(pd.DataFrame.value_counts(df))
 #3)
-autosCsv=pd.read_csv('autos.csv')
-#autosCsv=np.loadtxt('autos.csv', delimiter=',',dtype='str')
+autosCsv=pd.read_csv('./src/files/autos.csv')
+#autosCsv=np.loadtxt('./src/files/autos.csv', delimiter=',',dtype='str')
 #4)
 print(autosCsv[['make','city-mpg','highway-mpg']].groupby('make').mean().mean(axis=1))
 #5)

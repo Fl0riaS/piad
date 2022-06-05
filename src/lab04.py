@@ -26,7 +26,7 @@ plt.show()
 #zjawisko aliasingu
 
 #6
-img = mpimg.imread('bricks.png')
+img = mpimg.imread('./src/files/bricks.png')
 plt.imshow(img,interpolation='nearest')
 plt.show()
 plt.imshow(img,interpolation='lanczos')
@@ -95,7 +95,7 @@ plt.show()
 
 #BINARYZACJA
 #1,2
-img2 = mpimg.imread('cosnagradiencie.png')
+img2 = mpimg.imread('./src/files/cosnagradiencie.png')
 
 xsize=int(img2[0,:,:].size/3)
 ysize=int(img2.size/3/xsize)
