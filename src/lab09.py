@@ -128,7 +128,7 @@ dendrogram(linkage(X, 'ward'))
 plt.show()
 #endregion
 #region 9)
-zooCsv = pd.read_csv('zoo.csv').drop(['animal','type'], axis='columns')
+zooCsv = pd.read_csv('./src/files/zoo.csv').drop(['animal','type'], axis='columns')
 
 dendrogram(linkage(zooCsv, 'single'))
 plt.show()
