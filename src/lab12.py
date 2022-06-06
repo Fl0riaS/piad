@@ -32,3 +32,49 @@ import soundfile as sf
 
 #zadanie 4 dodatkowe
 
+#1)
+s, fs = sf.read('./src/files/jestemstudentem.wav', dtype='float32')
+
+s=s[:,0]
+
+plt.plot(np.arange(0,len(s))/fs, s)
+plt.show()
+
+#2.1)
+def Ej(x):
+  result = 0
+  for i in range(len(x)):
+    result += x[i]**2
+  return result
+
+def Zj(x):
+  result = 0
+  for i in range(1,len(x)):
+    #print(x[i-1]*x[i])
+    if x[i-1]*x[i] < 0:
+      result += 1
+  return result
+
+splited_size = int(int(fs / 100) * 5)
+splited = [s[x:x+splited_size] for x in range(0, len(s), splited_size)]
+
+energy = []
+zero_move = []
+
+for splited_item in splited:
+    energy.append(Ej(splited_item))
+    zero_move.append(Zj(splited_item))
+
+#2.2)
+energy = (energy - np.min(energy)) / (np.max(energy) - np.min(energy))
+zero_move = (zero_move - np.min(zero_move)) / (np.max(zero_move) - np.min(zero_move))
+
+fig, ax1 = plt.subplots(1, 1)
+ax1.set_title('window 20ms')
+ax1.plot(np.arange(0,len(s)), s, color='green')
+ax1cp = ax1.twiny()
+ax1cp.plot(energy, color='red')
+ax1cp.plot(zero_move, color='blue')
+plt.show()
+
+#2.4)
