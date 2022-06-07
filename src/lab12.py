@@ -157,40 +157,6 @@ zamaskowane_okno = samogloska*hamm
 #3.3)
 amplituda = np.log(np.abs(scipy.fftpack.fft(zamaskowane_okno, 40000)))
 
-#3.4)
-fig = plt.figure(constrained_layout=True, figsize=(12, 6))
-
-spec = fig.add_gridspec(3, 4)
-ax1 = fig.add_subplot(spec[0, :])
-ax1.set_title('25ms')
-ax1.plot((np.arange(0,len(s))/fs)*1000, s, color='green')
-ax1cp = ax1.twiny()
-ax1cp.plot(energy, color='red')
-ax1cp.plot(zero_move, color='blue')
-ax1cp.axes.get_xaxis().set_visible(False)
-
-x_samogloska = np.array(x_samogloska) / fs * 1000 - 1000
-x_samogloska = np.array(x_samogloska).astype(int)
-x_samogloska = np.linspace(x_samogloska[0], x_samogloska[1], 6).astype(int)
-ax2 = fig.add_subplot(spec[1, 0])
-ax2.set_xticklabels(x_samogloska)
-ax2.plot(samogloska, color='green')
-
-ax3 = fig.add_subplot(spec[1, 1])
-ax3.plot(hamm)
-
-ax4 = fig.add_subplot(spec[1, 2])
-ax4.plot(zamaskowane_okno)
-
-ax5 = fig.add_subplot(spec[1, 3])
-ax5.set_xticklabels([0, 0, 1, 2, 3, 4])
-ax5.plot(amplituda, color='red')
-
-ax6 = fig.add_subplot(spec[2, :])
-ax6.plot(amplituda[0:10000], color='red')
-
-plt.show()
-
 #4.2)
 a = list(librosa.lpc(samogloska, 20))
 
