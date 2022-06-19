@@ -32,8 +32,7 @@ import soundfile as sf
 import scipy.fftpack
 import librosa
 
-#zadanie 4 dodatkowe
-
+#region zadanie 1
 #1)
 s, fs = sf.read('./src/files/jestemstudentem.wav', dtype='float32')
 
@@ -41,7 +40,7 @@ s=s[:,0]
 
 plt.plot(np.arange(0,len(s))/fs, s)
 plt.show()
-
+#endregion
 #region zadanie 2
 #2.1)
 def Ej(x):
@@ -145,7 +144,7 @@ ax1cp.plot(energy, color='red')
 ax1cp.plot(zero_move, color='blue')
 plt.show()
 #endregion
-
+#region zadanie 3
 #3.1)
 samogloska = s[int(fs*1.00) - 1024:int(fs*1.00) + 1024]
 x_samogloska = [int(fs*1.00) - 1024,int(fs*1.00) + 1024]
@@ -156,7 +155,8 @@ zamaskowane_okno = samogloska*hamm
 
 #3.3)
 amplituda = np.log(np.abs(scipy.fftpack.fft(zamaskowane_okno, 40000)))
-
+#endregion
+#region zadanie 4
 #4.2)
 a = list(librosa.lpc(samogloska, 20))
 
@@ -204,3 +204,4 @@ ax6cp = ax6.twiny()
 ax6cp.plot(widmo - 5, color='red')
 
 plt.show()
+#endregion
